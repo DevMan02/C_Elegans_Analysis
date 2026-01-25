@@ -1559,13 +1559,13 @@ sim_results <- replicate(100, {
 rand_clustering <- mean(sim_results["C_rand",], na.rm = TRUE)
 rand_avg_path   <- mean(sim_results["L_rand",], na.rm = TRUE)
 
-# Gamma (Quanto siamo più clusterizzati del caso?) -> Vuoi che sia >> 1
+# Gamma (Quanto siamo più clusterizzati del caso?) 
 gamma <- real_clustering / rand_clustering
 
-# Lambda (Quanto siamo efficienti rispetto al caso?) -> Vuoi che sia ≈ 1
+# Lambda (Quanto siamo efficienti rispetto al caso?) 
 lambda <- real_avg_path / rand_avg_path
 
-# Sigma (Indice Small-World) -> Se > 1, è Small-World
+# Sigma (Indice Small-World) 
 sigma <- gamma / lambda
 
 
@@ -1582,7 +1582,7 @@ p1 <- ggplot(df_clust, aes(x = Clustering)) +
   theme_minimal()
 
 # Istogramma Lunghezza Cammini 
-# Calcoliamo TUTTI i cammini minimi tra tutte le coppie (può essere lento se la rete è enorme)
+# Calcoliamo TUTTI i cammini minimi tra tutte le coppie
 dist_table <- distance_table(g_somatic)
 # Ricostruiamo i dati per il plot (distance_table dà i conteggi)
 paths_df <- tibble(
